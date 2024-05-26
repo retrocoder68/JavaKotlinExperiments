@@ -3,6 +3,8 @@ package se.retrocoder;
 
 import se.retrocoder.iterators.JvBasicIterator;
 import se.retrocoder.iterators.JvFullIterator;
+import se.retrocoder.iterators.KtBasicIterator;
+import se.retrocoder.iterators.KtFullIterator;
 
 import java.util.Iterator;
 
@@ -12,6 +14,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        // Test java main
         System.out.println(new Main().getGreeting());
 
         // Test basic iterator
@@ -32,7 +35,26 @@ public class Main {
             System.out.println(i);
         }
 
+        // Test kotlin main
         System.out.println(new KtMain().getGreetings());
+
+        // Test kotlin basic iterator
+        System.out.println("Test KtBasicIterator with for loop");
+        for (Iterator<Integer> it2 = new KtBasicIterator(3).iterator(); it2.hasNext(); ) {
+            System.out.println(it2.next());
+        }
+
+        System.out.println("Test KtBasicIterator with while loop");
+        Iterator<Integer> it2 = new KtBasicIterator(3).iterator();
+        while (it2.hasNext()) {
+            System.out.println(it2.next());
+        }
+
+        // Test kotlin full iterator
+        System.out.println("Test KtFullIterator");
+        for (Integer i : new KtFullIterator(3)) {
+            System.out.println(i);
+        }
     }
 }
 
