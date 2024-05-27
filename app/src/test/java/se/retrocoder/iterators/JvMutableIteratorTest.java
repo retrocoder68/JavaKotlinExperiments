@@ -1,4 +1,4 @@
- /* Copyright (C) 2024 skywalker<j.karlsson@retrocoder.se> */
+/* Copyright (C) 2024 skywalker<j.karlsson@retrocoder.se> */
 package se.retrocoder.iterators;
 
 import org.junit.jupiter.api.Test;
@@ -7,10 +7,10 @@ import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class JvFullIteratorTest {
+public class JvMutableIteratorTest {
 
-    @Test void testJvFullIterator() {
-        JvFullIterator classUnderTest = new JvFullIterator(3);
+    @Test void testJvMutableIterator() {
+        JvMutableIterator classUnderTest = new JvMutableIterator(3);
         Iterator<Integer> it = classUnderTest.iterator();
         assertTrue(it.hasNext(), "should have next");
         assertEquals(0, it.next(), "should be 0");
@@ -21,20 +21,20 @@ class JvFullIteratorTest {
         assertFalse(it.hasNext(), "should not have next");
     }
 
-    @Test void testJvFullIteratorImmutability() {
-        JvFullIterator classUnderTest = new JvFullIterator(3);
+    @Test void testJvMutableIteratorMutability() {
+        JvMutableIterator classUnderTest = new JvMutableIterator(3);
         Iterator<Integer> it = classUnderTest.iterator();
         assertTrue(it.hasNext(), "should have next");
         assertEquals(0, it.next(), "should be 0");
-        assertThrows(UnsupportedOperationException.class, it::remove, "should throw UnsupportedOperationException");
+        assertDoesNotThrow(it::remove, "should not throw any exception");
 
         while (it.hasNext()) {
             it.next();
-            assertThrows(UnsupportedOperationException.class, it::remove, "should throw UnsupportedOperationException");
+            assertDoesNotThrow(it::remove, "should not throw any exception");
         }
 
         for (Integer $ : classUnderTest) {
-            assertThrows(UnsupportedOperationException.class, it::remove, "should throw UnsupportedOperationException");
+            assertDoesNotThrow(it::remove, "should not throw any exception");
         }
     }
 
