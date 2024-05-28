@@ -59,6 +59,13 @@ public class Main {
         for (Integer i : new KtFullIterator(3)) {
             System.out.println(i);
         }
+
+        // Test kotlin fibonacci iterator
+        System.out.println("Test KtFibonacci");
+        var ktFibonacci = new KtFibonacci().iterator();
+        for (int i = 0; i < 5; i++) {
+            System.out.println(ktFibonacci.next());
+        }
     }
 }
 
