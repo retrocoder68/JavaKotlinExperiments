@@ -1,10 +1,7 @@
 /* Copyright (C) 2024 skywalker<j.karlsson@retrocoder.se> */
 package se.retrocoder;
 
-import se.retrocoder.iterators.JvBasicIterator;
-import se.retrocoder.iterators.JvFullIterator;
-import se.retrocoder.iterators.KtBasicIterator;
-import se.retrocoder.iterators.KtFullIterator;
+import se.retrocoder.iterators.*;
 
 import java.util.Iterator;
 
@@ -33,6 +30,13 @@ public class Main {
         System.out.println("Test JvFullIterator");
         for (Integer i : new JvFullIterator(3)) {
             System.out.println(i);
+        }
+
+        // Test fibonacci iterator
+        System.out.println("Test JvFibonacci");
+        var jvFibonacci = new JvFibonacci().iterator();
+        for (int i = 0; i < 5; i++) {
+            System.out.println(jvFibonacci.next());
         }
 
         // Test kotlin main
