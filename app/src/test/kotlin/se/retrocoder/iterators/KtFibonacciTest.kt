@@ -13,6 +13,13 @@ class KtFibonacciTest {
         assertEquals(expected, actual)
     }
 
+    @Test fun testKtFibonacciAsIntSupplier() {
+        val fibonacci = KtFibonacci()
+        val expected = listOf(1, 1, 2, 3, 5, 8, 13, 21, 34, 55)
+        val actual = (1..10).map { fibonacci.asIntSupplier().asInt }
+        assertEquals(expected, actual)
+    }
+
 }
 
 /* License

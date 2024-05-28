@@ -1,6 +1,8 @@
 /* Copyright (C) 2024 skywalker<j.karlsson@retrocoder.se> */
 package se.retrocoder.iterators
 
+import java.util.function.IntSupplier
+
 class KtFibonacci : KtGenericIterator<Int>(
     object : KtSequence<Int> {
         private var n1: Int = 1;
@@ -44,7 +46,19 @@ class KtFibonacci : KtGenericIterator<Int>(
         override fun value(): Int {
             return n1
         }
-    }, 0)
+    }, 0) {
+
+    fun asIntSupplier(): IntSupplier {
+        return object : IntSupplier {
+            val it: Iterator<Int> = iterator()
+
+            override fun getAsInt(): Int {
+                return it.next()
+            }
+        }
+    }
+
+}
 
 /* License
  * This program is free software: you can redistribute it and/or modify

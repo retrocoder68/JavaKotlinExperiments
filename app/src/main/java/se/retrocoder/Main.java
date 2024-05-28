@@ -73,6 +73,12 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             System.out.println(ktFibonacci.next());
         }
+
+        // Test stream with kotlin fibonacci IntSupplier
+        System.out.println("Test stream with KtFibonacci IntSupplier");
+        IntStream.generate(new KtFibonacci().asIntSupplier())
+            .takeWhile(n -> n < 10)
+            .forEach(System.out::println);
     }
 }
 
