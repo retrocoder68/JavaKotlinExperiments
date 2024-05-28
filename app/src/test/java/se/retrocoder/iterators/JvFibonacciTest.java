@@ -4,6 +4,7 @@
  import org.junit.jupiter.api.Test;
 
  import java.util.Iterator;
+ import java.util.stream.IntStream;
 
  import static org.junit.jupiter.api.Assertions.assertEquals;
  import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -19,6 +20,13 @@
         assertEquals(1, it.next(), "should be 1");
         assertTrue(it.hasNext(), "should have next");
         assertEquals(2, it.next(), "should be 2");
+    }
+
+    @Test void testJvFibonacciIntSupplier() {
+        JvFibonacci classUnderTest = new JvFibonacci();
+        IntStream.generate(classUnderTest.asIntSupplier())
+                .takeWhile(n -> n < 10)
+                .forEach(n -> assertTrue(n > 0 && n < 10, "should be between 0 and 10"));
     }
 
 }

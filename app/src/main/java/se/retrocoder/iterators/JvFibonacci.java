@@ -1,6 +1,9 @@
 /* Copyright (C) 2024 skywalker<j.karlsson@retrocoder.se> */
 package se.retrocoder.iterators;
 
+import java.util.Iterator;
+import java.util.function.IntSupplier;
+
 public class JvFibonacci extends JvGenericIterator<Integer> {
 
     public JvFibonacci() {
@@ -52,6 +55,18 @@ public class JvFibonacci extends JvGenericIterator<Integer> {
             }
         }, 0);
     }
+
+    public IntSupplier asIntSupplier() {
+        return new IntSupplier() {
+            private final Iterator<Integer> it = iterator();
+
+            @Override
+            public int getAsInt() {
+                return it.next();
+            }
+        };
+    }
+
 }
 
 /* License

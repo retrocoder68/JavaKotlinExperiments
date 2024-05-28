@@ -4,6 +4,7 @@ package se.retrocoder;
 import se.retrocoder.iterators.*;
 
 import java.util.Iterator;
+import java.util.stream.IntStream;
 
 public class Main {
     public String getGreeting() {
@@ -38,6 +39,12 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             System.out.println(jvFibonacci.next());
         }
+
+        // Test stream with fibonacci IntSupplier
+        System.out.println("Test stream with JvFibonacci IntSupplier");
+        IntStream.generate(new JvFibonacci().asIntSupplier())
+            .takeWhile(n -> n < 10)
+            .forEach(System.out::println);
 
         // Test kotlin main
         System.out.println(new KtMain().getGreetings());
