@@ -1,10 +1,15 @@
 /* Copyright (C) 2024 skywalker<j.karlsson@retrocoder.se> */
 package se.retrocoder;
 
+import se.retrocoder.factory.JvSimpleBarBazFactory;
+import se.retrocoder.factory.JvWhoAmI;
 import se.retrocoder.iterators.*;
 
 import java.util.Iterator;
 import java.util.stream.IntStream;
+
+import static se.retrocoder.factory.JvSimpleBarBazFactory.Type.BAR;
+import static se.retrocoder.factory.JvSimpleBarBazFactory.Type.BAZ;
 
 public class Main {
     public String getGreeting() {
@@ -45,6 +50,15 @@ public class Main {
         IntStream.generate(new JvFibonacci().asIntSupplier())
             .takeWhile(n -> n < 10)
             .forEach(System.out::println);
+
+        // Test factory
+        System.out.println("Test factory");
+        var factory = new JvSimpleBarBazFactory();
+        JvWhoAmI bar = factory.create(BAR);
+        System.out.println(bar.whoAmI());
+
+        JvWhoAmI baz = factory.create(BAZ);
+        System.out.println(baz.whoAmI());
 
         // Test kotlin main
         System.out.println(new KtMain().getGreetings());
