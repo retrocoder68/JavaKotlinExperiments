@@ -3,6 +3,8 @@ package se.retrocoder;
 
 import se.retrocoder.factory.JvSimpleBarBazFactory;
 import se.retrocoder.factory.JvWhoAmI;
+import se.retrocoder.factory.KtSimpleBarBazFactory;
+import se.retrocoder.factory.KtWhoAmI;
 import se.retrocoder.iterators.*;
 
 import java.util.Iterator;
@@ -93,6 +95,15 @@ public class Main {
         IntStream.generate(new KtFibonacci().asIntSupplier())
             .takeWhile(n -> n < 10)
             .forEach(System.out::println);
+
+        // Test factory
+        System.out.println("Test factory");
+        var ktFactory = new KtSimpleBarBazFactory();
+        KtWhoAmI ktBar = ktFactory.create(KtSimpleBarBazFactory.Type.BAR);
+        System.out.println(ktBar.whoAmI());
+
+        KtWhoAmI ktBaz = ktFactory.create(KtSimpleBarBazFactory.Type.BAZ);
+        System.out.println(ktBaz.whoAmI());
     }
 }
 
